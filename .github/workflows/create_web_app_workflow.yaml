@@ -86,7 +86,6 @@ jobs:
         fi
         git config --global user.email "siva.medapati@blueyonder.com"
         git config --global user.name "Siva Medapati"
-        git pull origin ${BRANCH}
         git add -f .github/webapps/webapps.json
         git commit -m "added webapps json"
         git push origin ${BRANCH}
