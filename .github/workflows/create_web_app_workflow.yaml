@@ -76,7 +76,13 @@ jobs:
 
     - name: Get Azure Web App Endpoint URL
       run: |
-        if [[ ! -f ".github/webapps/webapps.json" ]];then
-          mkdir -p ".github/webapps"  
-          touch ".github/webapps/webapps.json"
+        if [[ ! -f .github/webapps/webapps.json ]];then
+          mkdir -p .github/webapps
+          touch .github/webapps/webapps.json
+          git config pull.rebase false
+          git pull origin ${BRANCH}
+          git add -f .github/webapps/webapps.json
+          git commit -m "added webapps json"
+          git push origin ${BRANCH}
         fi
+        
