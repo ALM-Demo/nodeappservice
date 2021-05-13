@@ -79,6 +79,8 @@ jobs:
         if [[ ! -f .github/webapps/webapps.json ]];then
           mkdir -p .github/webapps
           touch .github/webapps/webapps.json
+          git config --global user.email "siva.medapati@blueyonder.com"
+          git config --global user.name "Siva Medapati"
           git config pull.rebase false
           git pull origin ${BRANCH}
           git add -f .github/webapps/webapps.json
