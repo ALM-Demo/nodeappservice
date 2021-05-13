@@ -28,10 +28,10 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v2
 
-    # - name: Login to Azure
-    #   uses: azure/login@v1
-    #   with:
-    #     creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
         
     # - name: Create Azure Container Registry
     #   run: |
