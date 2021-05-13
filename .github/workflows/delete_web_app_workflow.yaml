@@ -31,7 +31,7 @@ jobs:
 
     - name: Update Azure Web App Endpoints File
       run: |
-        jq 'del(.[($AZURE_WEB_APP_NAME)])' < .github/webapps/webapps.json > tmp_webapps.json && mv tmp_webapps.json .github/webapps/webapps.json
+        jq "del(.[$AZURE_WEB_APP_NAME])" < .github/webapps/webapps.json > tmp_webapps.json && mv tmp_webapps.json .github/webapps/webapps.json
         git config --global user.email "siva.medapati@blueyonder.com"
         git config --global user.name "Siva Medapati"
         git config pull.rebase false
