@@ -76,7 +76,7 @@ jobs:
 
     - name: Get Azure Web App Endpoint URL
       run: |
-        if [[ ! -f .github/webapps/webapps.json ]];then
+        if [ ! -f .github/webapps/webapps.json ];then
           mkdir -p .github/webapps
           touch .github/webapps/webapps.json
           echo '{}' > .github/webapps/webapps.json
