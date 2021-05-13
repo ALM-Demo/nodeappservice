@@ -2,9 +2,5 @@
   "alm-app-node-nodeappservice-dev": {
     "resource_group": "rg-by-workflow-shared-dev-eus2-01",
     "webapp_url": "https://alm-app-node-nodeappservice-dev.azurewebsites.net"
-  },
-  "alm-app-node-nodeappservice-qa": {
-    "resource_group": "rg-by-workflow-shared-dev-eus2-01",
-    "webapp_url": "https://"
   }
 }
