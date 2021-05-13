@@ -82,8 +82,8 @@ jobs:
           touch .github/webapps/webapps.json
           echo '{}' > .github/webapps/webapps.json
         else
-          export webapp_url=`az webapp config hostname list --webapp-name alm-app-node-nodeappservice-dev --resource-group rg-by-workflow-shared-dev-eus2-01 --query [].name -o tsv`
-          jq --arg webapp_name $AZURE_WEB_APP_NAME --arg resource_group $AZURE_RESOURCE_GROUP --arg webapp_url $webapp_url '. + {($webapp_name): {"resource_group": $resource_group, "webapp_url": $webapp_url}}' < .github/webapps/webapps.json > tmp_webapps.json && mv tmp_webapps.json .github/webapps/webapps.json
+          export WEB_APP_URL=`az webapp config hostname list --webapp-name alm-app-node-nodeappservice-dev --resource-group rg-by-workflow-shared-dev-eus2-01 --query [].name -o tsv`
+          jq --arg webapp_name $AZURE_WEB_APP_NAME --arg resource_group $AZURE_RESOURCE_GROUP --arg webapp_url "https://$WEB_APP_URL" '. + {($webapp_name): {"resource_group": $resource_group, "webapp_url": $webapp_url}}' < .github/webapps/webapps.json > tmp_webapps.json && mv tmp_webapps.json .github/webapps/webapps.json
         fi
         git config --global user.email "siva.medapati@blueyonder.com"
         git config --global user.name "Siva Medapati"
