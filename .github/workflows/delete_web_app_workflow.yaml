@@ -17,6 +17,9 @@ jobs:
       run: |
         echo "AZURE_WEB_APP_NAME=${AZURE_WEB_APP_NAME_PREFIX}-${AZURE_WEB_APP_TYPE}-${GITHUB_REPO_NAME}-${AZURE_DEPLOY_ENVIRONMENT}" >> $GITHUB_ENV
     
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
     - name: Login to Azure
       uses: azure/login@v1
       with:
