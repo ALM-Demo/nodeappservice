@@ -83,7 +83,6 @@ jobs:
           echo '{}' > .github/webapps/webapps.json
         else
           jq --arg webapp_name $AZURE_WEB_APP_NAME --arg resource_group $AZURE_RESOURCE_GROUP '. + {($webapp_name): {"resource_group": $resource_group}}' < .github/webapps/webapps.json > tmp_webapps.json && mv tmp_webapps.json .github/webapps/webapps.json
-          rm tmp_webapps.json
         fi
         git config --global user.email "siva.medapati@blueyonder.com"
         git config --global user.name "Siva Medapati"
