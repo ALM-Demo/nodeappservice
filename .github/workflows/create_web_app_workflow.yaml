@@ -81,7 +81,7 @@ jobs:
           touch .github/webapps/webapps.json
           echo '{}' > .github/webapps/webapps.json
         else
-          jq --arg webapp_name $AZURE_WEB_APP_NAME --arg resource_group $AZURE_RESOURCE_GROUP ". + {($webapp_name) : {"resource_group" : $resource_group}}" < .github/webapps/webapps.json > tmp_webapps.json && mv tmp_webapps.json .github/webapps/webapps.json
+          jq --arg webapp_name $AZURE_WEB_APP_NAME '. + {"webapp": $webapp_name}' < .github/webapps/webapps.json > tmp_webapps.json && mv tmp_webapps.json .github/webapps/webapps.json
         fi
         jq '. + {$AZURE_WEB_APP_NAME: {"Resource_Group": $AZURE_RESOURCE_GROUP}}' > .github/webapps/webapps.json
         git config --global user.email "siva.medapati@blueyonder.com"
