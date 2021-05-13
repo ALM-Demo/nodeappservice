@@ -85,7 +85,7 @@ jobs:
           echo "WEB_APP_URL=$(az webapp config hostname list --webapp-name alm-app-node-nodeappservice-dev --resource-group rg-by-workflow-shared-dev-eus2-01 --query [].name -o tsv)" >> $GITHUB_ENV 
           jq --arg webapp_name $AZURE_WEB_APP_NAME --arg resource_group $AZURE_RESOURCE_GROUP --arg webapp_url $WEB_APP_URL '. + {($webapp_name): {"resource_group": $resource_group},{"webapp_url": ($webapp_url)}}' < .github/webapps/webapps.json > tmp_webapps.json && mv tmp_webapps.json .github/webapps/webapps.json
         fi
-        cat $GITHUB_WORKSPACE/.github/webapps/webapps.json
+        jq '.' .github/webapps/webapps.json
         ls -la .github/webapps/
     - name: Commit webapp file
       run: |
