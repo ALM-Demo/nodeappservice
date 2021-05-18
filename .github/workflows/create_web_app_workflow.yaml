@@ -11,6 +11,9 @@ jobs:
       AZURE_RESOURCE_GROUP: "${{ github.event.client_payload.resource_group }}"
       AZURE_DEPLOY_ENVIRONMENT: "${{ github.event.client_payload.environment }}"
       AZURE_WEB_APP_TYPE: "${{ github.event.client_payload.app_type }}"
+      AZURE_CLIENT_ID: "${{ github.event.client_payload.client_id }}"
+      AZURE_CLIENT_SECRET: "${{ github.event.client_payload.client_secret }}"
+      AZURE_TENANT_ID: "${{ github.event.client_payload.tenant_id }}"
       AZURE_WEB_APP_NAME_PREFIX: 'alm-app'
       AZURE_WEB_APP_SKU: 'S1'
       AZURE_WEB_APP_WORKERS: '4'
@@ -29,9 +32,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      run: |
+        az login --service-principal --username $AZURE_CLIENT_ID --password $AZURE_CLIENT_SECRET --tenant $AZURE_TENANT_ID
         
     - name: Create Azure Container Registry
       run: |
